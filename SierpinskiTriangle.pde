@@ -6,13 +6,10 @@ public void setup()
 }
 public void draw()
 {
-	sierpinski(0 + (500-len)/2, 500 - (500-len*Math.sqrt(3)/2)/2, len);
+	sierpinski(0 + (500-len)/2, 500 - (500-len*Math.sqrt(3)/2)/2, len, color(0, 0, 0));
 }
 public void mouseDragged()//optional
 {
-	background(211, 211, 211);
-	//len = 500 * Math.random();
-	redraw();
 }
 public void sierpinski(double x, double y, double len)
 {
@@ -29,12 +26,12 @@ public void sierpinski(double x, double y, double len)
 
 public void sierpinski(double x, double y, double len, int clr) {
 	if (len < 20) {
-		fill((int)(clr + (7 * Math.random()),(int)(255 * Math.random()),(int)(255 * Math.random()));
+		fill((int)(clr + (7 * Math.random())),(int)(255 * Math.random()),(int)(255 * Math.random()));
 		triangle((int)x, (int)y, (int)(x+len), (int)y, (int)(x+len/2), (int)(y - Math.sqrt(3)/2*len));
 	}
 	else {
-		sierpinski(x, y, len/2, clr);
-		sierpinski(x + len/2, y, len/2, clr);
-		sierpinski(x + len/4, y-Math.sqrt(3)*len/4, len/2, clr);
+		sierpinski(x, y, len/2, clr+1024*((int)Math.random()));
+		sierpinski(x + len/2, y, len/2, clr+1024*((int)Math.random()));
+		sierpinski(x + len/4, y-Math.sqrt(3)*len/4, len/2, clr+1024*((int)Math.random()));
 	}
 }
